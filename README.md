@@ -1,11 +1,14 @@
 # BKT_python_gridsearch
-1.	Data file needs to be sorted by skill, student, and time (in that order).  
-  a.	student : unique student id  
-  b.	skill : unique skill name for each skill  
+
+Implements a grid-search method to find BKT parameters using a shared c library in Python. The shared c library implements the grid search to speed up the nested for loops. There are functions to get BKT parameters, get predictions using those parameters, calculate collapsed and non-collapsed evaluation metrics (rmse, auc_roc, accuracy), and implement student-stratified k-fold cross-validation.
+
+1.	The data file needs to be sorted by skill, student, and time (in that order).  
+  a.	student: unique student id  
+  b.	skill: unique skill name for each skill  
   c.	time: when the question was attempted  
-  d.	right : 1 (correct) and 0 (incorrect)  
+  d.	right: 1 (correct) and 0 (incorrect)  
 3.	We’ll be using a shared c library (find_par.c file) to speed up the execution of nested for loops required for finding BKT parameters using grid search. First, create a shared library file (.so extension) using the C compiler for the “find_par.c” file.  
-  a.	In terminal, navigate to the directory where find_par.c file is located.  
+  a.	In the terminal, navigate to the directory where find_par.c file is located.  
   b.	Create the shared library using the following command   
 gcc -fPIC -shared -o find_par.so find_par.c  
   c.	This should generate a “find_par.so” file in the same directory.  
